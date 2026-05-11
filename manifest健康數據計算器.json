@@ -7,12 +7,12 @@
   "theme_color": "#4A90E2",
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "健康數據計算器image/192icon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "icon-512.png",
+      "src": "健康數據計算器image/512icon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
