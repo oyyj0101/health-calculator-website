@@ -1,8 +1,8 @@
 :root {
-    --primary-color: #333;
-    --secondary-color: #8bdda6;
-    --bg-color: #f8f9fa; /* 稍微帶點灰色，卡片才會更明顯 */
-    --text-color: #333;
+    --primary-color: #3c3c3c;   /* 你原本設定的藍色 */
+    --secondary-color: #8bdda6; /* 你原本設定的綠色 */
+    --bg-color: #f8f9fa;        /* 淺灰色背景 */
+    --text-color: #333;         /* 你原本設定的深灰色文字 */
 }
 
 /* 基礎設定 */
@@ -16,7 +16,6 @@ body {
     margin: 0;
 }
 
-/* 修正：加上點號代表 Class */
 .container {
     max-width: 500px;
     width: 100%;
@@ -36,31 +35,10 @@ h1 {
     height: 45px;
     background-color: #e0e0e0;
     border-radius: 50px;
-    margin: 0 auto 35px; /* 增加下方間距 */
+    margin: 0 auto 35px;
     cursor: pointer;
     padding: 5px;
     box-sizing: border-box;
-}
-
-/* 處理滑塊位移 */
-.nav-toggle.center .slider {
-    transform: translateX(100%);
-}
-.nav-toggle.right .slider {
-    transform: translateX(200%);
-}
-
-/* 3. 核心修正：對應 JS 的三個位置 */
-.nav-toggle.pos-0 .slider {
-    transform: translateX(0);
-}
-
-.nav-toggle.pos-1 .slider {
-    transform: translateX(100%); /* 移動一個滑塊的寬度 */
-}
-
-.nav-toggle.pos-2 .slider {
-    transform: translateX(200%); /* 移動兩個滑塊的寬度 */
 }
 
 .nav-item {
@@ -82,7 +60,7 @@ h1 {
     position: absolute;
     top: 5px;
     left: 5px;
-    width: calc(33.33% - 5px); /* 三個項目，所以佔 1/3 */
+    width: calc(33.33% - 5px);
     height: calc(100% - 10px);
     background-color: var(--primary-color);
     border-radius: 50px;
@@ -90,9 +68,10 @@ h1 {
     z-index: 1;
 }
 
-.nav-toggle.right .slider {
-    transform: translateX(100%);
-}
+/* 導覽列位移邏輯 */
+.nav-toggle.pos-0 .slider { transform: translateX(0); }
+.nav-toggle.pos-1 .slider { transform: translateX(100%); }
+.nav-toggle.pos-2 .slider { transform: translateX(200%); }
 
 /* --- 頁面內容控制 --- */
 .page-content {
@@ -114,36 +93,32 @@ h1 {
     background: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* 稍微減輕陰影讓視覺更舒服 */
-    margin-bottom: 30px; /* 拉開卡片距離 */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
     transition: 0.3s;
+    border: 1px solid transparent;
 }
 
-/* 滑鼠移動到的效果：陰影加深、黑色細框 */
 .calculator-card:hover, .results-card:hover {
     box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-    border: 1px solid #333;
+    border: 1px solid var(--text-color); /* 滑鼠移入時的黑色細框 */
 }
 
-/* --- 輸入區域對齊 (關鍵部分) --- */
-
-/* 每一行都是 Flex 佈局 */
+/* --- 輸入區域佈局 --- */
 .input-row {
     display: flex;
     align-items: center;
-    margin-bottom: 20px; /* 增加行間距 */
+    margin-bottom: 20px;
 }
 
-/* 左側文字標籤 */
 .input-row label {
-    width: 110px; /* 固定寬度讓右邊框框對齊 */
+    width: 110px;
     flex-shrink: 0;
     font-weight: bold;
     color: #555;
 }
 
-/* 右側輸入框、下拉選單樣式 */
-input[type="number"], select {
+input[type="number"], select, textarea {
     flex-grow: 1;
     padding: 10px;
     border: 1px solid #ddd;
@@ -152,7 +127,7 @@ input[type="number"], select {
     transition: border 0.3s;
 }
 
-input[type="number"]:focus, select:focus {
+input:focus, select:focus, textarea:focus {
     border-color: var(--primary-color);
     outline: none;
 }
@@ -171,25 +146,21 @@ input[type="number"]:focus, select:focus {
     cursor: pointer;
 }
 
-/* 修正 Radio 按鈕大小與垂直對齊 */
 .radio-option input[type="radio"] {
     width: 18px;
     height: 18px;
     margin: 0;
-    cursor: pointer;
 }
 
-/* 讓性別裡面的「男性/女性」文字不要被固定寬度限制 */
 .radio-option label {
     width: auto !important;
     font-weight: normal;
-    cursor: pointer;
 }
 
 /* --- 按鈕樣式 --- */
 button {
     width: 100%;
-    background-color: #f0f0f0; /* 修正：原本 var(#ffffff) 是錯的 */
+    background-color: #f0f0f0;
     color: #555;
     border: 1px solid #ccc;
     padding: 12px;
@@ -220,6 +191,7 @@ button:hover {
     font-size: 1.2rem;
     border-top: 1px solid #eee;
     padding-top: 15px;
+    font-weight: bold;
 }
 
 #bmi-status {
@@ -229,45 +201,71 @@ button:hover {
     color: var(--primary-color);
 }
 
-/* 每一條紀錄的樣式 */
+/* --- 數據紀錄項目樣式 --- */
 .record-item {
     display: flex;
-    justify-content: space-between;
-    align-items: center; /* 讓刪除按鈕垂直居中 */
-    align-items: center;
-    padding: 15px;
-    border: 1px solid #eee; /* 加個淡淡的邊框 */
-    border-bottom: 1px solid #eee;
+    flex-direction: column;
+    padding: 20px;
     background-color: #fafafa;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* 加點微陰影 */
+    border: 1px solid #eee;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .record-info {
-    font-size: 14px;
-    flex-grow: 1; /* 讓文字區塊佔滿空間 */
+    width: 100%;
     line-height: 1.4;
 }
 
-.record-info small {
-    color: #888;
+/* 備註顯示盒 */
+.note-container {
+    margin-top: 12px;
+    padding: 10px 15px;
+    background: #f0f4f8;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    cursor: pointer;
+    transition: background 0.2s;
+    box-sizing: border-box;
+    width: 100%;
 }
 
-/* 刪除按鈕樣式 */
+.note-text {
+    display: block;
+    font-size: 0.85rem;
+    color: #444;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 展開狀態 */
+.note-container.expanded .note-text {
+    white-space: normal;
+    word-break: break-all;
+}
+
+/* 紀錄下方的按鈕群組 */
+.record-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 12px;
+}
+
 .delete-btn {
-    width: auto; /* 不要像計算按鈕那麼寬 */
-    padding: 5px 12px;
-    background-color: #ff4d4f;
-    color: white;
+    flex: 1;
+    padding: 8px;
+    font-size: 0.85rem;
+    border-radius: 6px;
     border: none;
-    font-size: 13px;
-    border-radius: 4px;
-    margin-top: 0; /* 覆蓋原本 button 的 margin-top */
-    margin-left: 15px; /* 跟文字拉開距離 */
-    white-space: nowrap; /* 防止按鈕文字換行 */
+    color: white;
+    background-color: #ff4d4f; /* 刪除按鈕維持紅色 */
+    cursor: pointer;
 }
 
-.delete-btn:hover {
-    background-color: #ff7875;
+.btn-edit {
+    background-color: #6c757d; /* 編輯按鈕設定為灰色 */
 }
