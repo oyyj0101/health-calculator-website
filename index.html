@@ -7,6 +7,13 @@
     <meta name="description" content="提供最準確的線上健康計算工具，包含 BMI 指數、基礎代謝率 BMR 及 TDEE 計算，並提供專業的營養建議，助您達成理想體態。">
     <title>健康數據計算機</title>
     <link rel="stylesheet" href="健康數據計算器.css">
+    <link rel="manifest" href="manifest健康數據計算器.json">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./Offline健康數據計算器.js');
+  }
+</script>
 </head>
 <body>
 
