@@ -3,31 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI/BMR/TDEE常見問題 - 健康數據計算器</title>
+    <title>常見問題 - 健康數據計算器</title>
     <link rel="stylesheet" href="健康數據計算器.css">
-    <!-- Google Fonts (Noto Serif TC) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- 頂部導覽列 -->
     <nav class="top-nav">
         <div class="nav-container">
             <div class="logo">健康助手</div>
             <ul class="nav-links">
                 <li><a href="index.html">首頁</a></li>
-                <li><a href="formula計算公式.html" class="current">計算公式</a></li>
-                <li><a href="faq常見問題.html">常見問題</a></li>
+                <li><a href="formula計算公式.html">計算公式</a></li>
+                <li><a href="faq常見問題.html" class="current">常見問題</a></li>
                 <li><a href="about製作人資訊.html">製作人資訊</a></li>
             </ul>
         </div>
     </nav>
+
     <div class="container">
-        <header class="page-header">
-            <h1>Q&A常見問題</h1>
-            <p>關於 BMI、BMR 與 TDEE，的常見問題將會在這裡為您解答。</p>
+        <header class="page-header" style="text-align: center; margin-bottom: 40px;">
+            <h1>Q&A 常見問題</h1>
+            <p>點擊類別展開問題，再次點擊問題查看詳細解答。</p>
         </header>
+
+        <!-- 分類：BMI -->
+        <details class="faq-category-card">
+            <summary class="category-title">關於 BMI</summary>
+            <div class="faq-content">
+                <div>
+                    <details class="faq-item">
+                        <summary class="faq-question">BMI正常就代表健康嗎？</summary>
+                        <p class="faq-answer">不一定，BMI只能看體重、身高，但無法知道體脂率、肌肉量、內臟脂肪，例如健身者肌肉很多，BMI 可能偏高，但其實很健康。</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">BMI很低一定很瘦嗎？</summary>
+                        <p class="faq-answer">不一定。有些人肌肉量低，脂肪比例高，看起來不胖，但其實是「泡芙人」，這種狀況稱為隱性肥胖。</p>
+                    </details>
+                </div>
+            </div>
+        </details>
+
+        <!-- 分類：BMR -->
+        <details class="faq-category-card">
+            <summary class="category-title">關於 BMR</summary>
+            <div class="faq-content">
+                <div>
+                    <details class="faq-item">
+                        <summary class="faq-question">為什麼每個人的BMR不同？</summary>
+                        <p class="faq-answer">因為受到很多因素影響，例如性別、年齡、身高、體重、肌肉量，通常肌肉越多BMR越高，年紀越大BMR越低。</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary class="faq-question">BMR會下降嗎？</summary>
+                        <p class="faq-answer">會。常見原因如年齡增加導致肌肉流失、長期節食使身體進入省電模式、缺乏運動導致肌肉量下降。</p>
+                    </details>
+                </div>
+            </div>
+        </details>
+
+        <!-- 分類：TDEE -->
+        <details class="faq-category-card">
+            <summary class="category-title">關於 TDEE</summary>
+            <div class="faq-content">
+                <div>
+                    <details class="faq-item">
+                        <summary class="faq-question">想減重該攝取多少熱量？</summary>
+                        <p class="faq-answer">建議攝取量為：TDEE 減去 300 至 500 大卡，但不得低於 BMR。</p>
+                    </details>
+                </div>
+            </div>
+        </details>
+
+        <!-- 分類：其他 -->
+        <details class="faq-category-card">
+            <summary class="category-title">其他</summary>
+            <div class="faq-content">
+                <div>
+                    <details class="faq-item">
+                        <summary class="faq-question">多久該重新測量一次？</summary>
+                        <p class="faq-answer">建議每個月或體重變動超過 2 公斤時重新計算一次。</p>
+                    </details>
+                </div>
+            </div>
+        </details>
+
+        <div class="actions" style="text-align: center; margin-top: 40px;">
+            <button class="btn-back" onclick="location.href='index.html'">返回計算器</button>
+        </div>
     </div>
+
+    <script src="健康數據計算器.js"></script>
 </body>
 </html>
