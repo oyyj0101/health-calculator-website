@@ -6,6 +6,52 @@
     --bg-color: #f8f9fa;
     --text-color: #333;
 }
+/* 頂部導覽列樣式 */
+.top-nav {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: fixed; /* 固定在頂部 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 10px 0;
+}
+
+.nav-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+    font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-color);
+}
 
 /* 基礎設定 */
 body {
@@ -18,6 +64,7 @@ body {
     justify-content: center;
     padding: 40px 20px;
     margin: 0;
+    padding-top: 80px !important; 
 }
 
 /* 如果你希望標題看起來更有氣勢，可以單獨加強權重 */
@@ -278,4 +325,63 @@ button:hover {
 
 .btn-edit {
     background-color: #6c757d; /* 編輯按鈕設定為灰色 */
+}
+
+/*計算公式 */
+.formula-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.formula-card:hover {
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    border: 1px solid var(--text-color); /* 滑鼠移入時的黑色細框 */
+}
+
+/* 標題樣式 */
+.section-title {
+    color: #333;
+    font-size: 1.5rem;
+    margin-top: 0;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* 表格樣式優化 */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+.data-table th, .data-table td {
+    padding: 12px;
+    border: 1px solid #eee;
+    text-align: center;
+}
+
+.row-highlight {
+    background-color: #f6ffed; /* 正常範圍的淡綠色 */
+}
+
+/* 返回按鈕樣式 */
+.btn-back {
+    background-color: #4a4a4a;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.btn-back:hover {
+    background-color: #333;
 }
