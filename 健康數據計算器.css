@@ -5,6 +5,14 @@
     --text-color: #333;         /* 你原本設定的深灰色文字 */
 }
 
+
+.noto-serif-tc-<uniquifier> {
+  font-family: "Noto Serif TC", serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
 /* 基礎設定 */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
