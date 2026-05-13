@@ -34,6 +34,10 @@ function switchPage(pageId, element) {
     document.getElementById('page-' + pageId).classList.add('active');
 }
 
+function goToFormula() {
+    window.location.href = "formula.html";
+}
+
 // 2. 計算功能
 function calculate() {
     const age = parseFloat(document.getElementById('age').value);
