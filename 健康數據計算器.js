@@ -224,3 +224,42 @@ function updateChart() {
         }
     });
 }
+
+// --- FAQ 常見問題專用邏輯 (修正優化版) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const allDetails = document.querySelectorAll('details');
+
+    allDetails.forEach((details) => {
+        const summary = details.querySelector('summary');
+        
+        summary.addEventListener('click', (e) => {
+            const isCategory = details.classList.contains('faq-category-card');
+
+            if (!details.hasAttribute('open')) {
+                // 開啟時：只關閉「同等級」的鄰居
+                let parent = details.parentElement;
+                // 如果是分類，則搜尋 container 內的所有分類
+                let selector = isCategory ? '.faq-category-card' : '.faq-item';
+                
+                parent.querySelectorAll(selector).forEach(other => {
+                    if (other !== details && other.hasAttribute('open')) {
+                        // 讓鄰居優雅地關閉
+                        other.classList.add('collapsing');
+                        setTimeout(() => {
+                            other.removeAttribute('open');
+                            other.classList.remove('collapsing');
+                        }, 300);
+                    }
+                });
+            } else {
+                // 關閉時：執行收合動畫
+                e.preventDefault();
+                details.classList.add('collapsing');
+                setTimeout(() => {
+                    details.removeAttribute('open');
+                    details.classList.remove('collapsing');
+                }, 300);
+            }
+        });
+    });
+});
