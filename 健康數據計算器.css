@@ -1,20 +1,29 @@
 @charset "UTF-8";
+
 :root {
-    --primary-color: #3c3c3c;   /* 你原本設定的藍色 */
-    --secondary-color: #8bdda6; /* 你原本設定的綠色 */
-    --bg-color: #f8f9fa;        /* 淺灰色背景 */
-    --text-color: #333;         /* 你原本設定的深灰色文字 */
+    --primary-color: #3c3c3c;
+    --secondary-color: #8bdda6;
+    --bg-color: #f8f9fa;
+    --text-color: #333;
 }
 
 /* 基礎設定 */
 body {
-    font-family: 'Noto Serif TC', "Microsoft JhengHei", "PingFang TC", serif;
+    /* 這裡決定了全網頁的字體 */
+    font-family: 'Noto Serif TC', serif;
+    -webkit-font-smoothing: antialiased; /* 讓襯線字在螢幕上看起來更清晰 */
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
     justify-content: center;
     padding: 40px 20px;
     margin: 0;
+}
+
+/* 如果你希望標題看起來更有氣勢，可以單獨加強權重 */
+h1, h2 {
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 700;
 }
 
 .container {
