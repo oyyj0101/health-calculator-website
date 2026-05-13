@@ -15,7 +15,7 @@
 
 /* 基礎設定 */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Noto Serif TC', "Microsoft JhengHei", "PingFang TC", serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     display: flex;
