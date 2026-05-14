@@ -546,3 +546,71 @@ summary::-webkit-details-marker {
     outline: none;
     -webkit-tap-highlight-color: transparent;
 }
+
+/*鼠標移動時效果*/
+#canvas-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none; /* 確保不影響點擊按鈕 */
+    z-index: 10000;
+}
+
+/* --- 響應式導覽列樣式 --- */
+
+/* 預設隱藏漢堡按鈕 */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 4px 0;
+    transition: 0.4s;
+    border-radius: 3px;
+}
+
+/* 當螢幕小於 768px 時觸發 */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .nav-links {
+        position: fixed;
+        right: -100%; /* 預設在右邊螢幕外 */
+        top: 60px;    /* 導覽列的高度 */
+        flex-direction: column;
+        background-color: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+        gap: 0;
+        padding: 20px 0;
+    }
+
+    .nav-links.active {
+        right: 0; /* 點擊後滑入螢幕 */
+    }
+
+    .nav-links li {
+        margin: 15px 0;
+    }
+
+    /* 漢堡按鈕變成 X 的動畫效果 */
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+}
