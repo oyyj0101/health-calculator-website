@@ -10,11 +10,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
 </head>
+<canvas id="canvas-cursor"></canvas> <!--鼠標移動效果-->
 <body>
     <!-- 頂部導覽列 -->
     <nav class="top-nav">
         <div class="nav-container">
             <div class="logo">健康助手</div>
+
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            
             <ul class="nav-links">
                 <li><a href="index.html">首頁</a></li>
                 <li><a href="formula計算公式.html" class="current">計算公式</a></li>
@@ -29,5 +37,6 @@
             <p>佛光大學 資訊應用學系(遊戲組) 113153157 劉又慈</p>
         </header>
     </div>
+    <script src="健康數據計算器.js"></script>
 </body>
 </html>
