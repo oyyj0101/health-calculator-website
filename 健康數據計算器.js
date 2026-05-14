@@ -344,3 +344,23 @@ document.querySelectorAll('.nav-links a').forEach(n => n.addEventListener('click
     menu.classList.remove('is-active');
     menuLinks.classList.remove('active');
 }));
+
+// --- 頁面跳轉平滑動畫 ---
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        // 排除新視窗開啟或相同路徑
+        if (this.hostname === window.location.hostname && !this.getAttribute('target')) {
+            e.preventDefault();
+            const targetUrl = this.href;
+
+            // 讓 body 執行淡出動畫
+            document.body.style.transition = 'opacity 0.4s ease';
+            document.body.style.opacity = '0';
+
+            // 等動畫快結束時執行跳轉
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 400);
+        }
+    });
+});
