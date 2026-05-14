@@ -263,3 +263,84 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+//鼠標移動效果
+
+const canvas = document.getElementById('canvas-cursor');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+class Particle {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 4 + 1; // 隨機大小
+        this.speedX = Math.random() * 0.5 - 0.25; // 水平速度
+        this.speedY = Math.random() * 0.5 - 0.25; //垂直速度
+        this.color = "#88888870"; // 粒子色彩
+        this.alpha = 1;
+    }
+    update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.alpha -= 0.02; // 慢慢消失
+    }
+    draw() {
+        ctx.save();
+        ctx.globalAlpha = this.alpha;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    }
+}
+
+let moveCount = 0; // 新增一個計數器
+
+window.addEventListener('mousemove', (e) => {
+    moveCount++;
+    
+    // --- 修改這裡：每移動 3 次才產生 1 個粒子 ---
+    if (moveCount % 3 === 0) { 
+        particles.push(new Particle(e.clientX, e.clientY));
+    }
+});
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particles.length; i++) {
+        particles[i].update();
+        particles[i].draw();
+        if (particles[i].alpha <= 0) {
+            particles.splice(i, 1);
+            i--;
+        }
+    }
+    requestAnimationFrame(animate);
+}
+animate();
+
+// --- 響應式導覽列邏輯 ---
+const menu = document.querySelector('#mobile-menu');
+const menuLinks = document.querySelector('.nav-links');
+
+if (menu) {
+    menu.addEventListener('click', function() {
+        menu.classList.toggle('is-active');
+        menuLinks.classList.toggle('active');
+    });
+}
+
+// 點擊連結後自動收起選單 (在手機版點擊後跳轉，選單應消失)
+document.querySelectorAll('.nav-links a').forEach(n => n.addEventListener('click', () => {
+    menu.classList.remove('is-active');
+    menuLinks.classList.remove('active');
+}));
